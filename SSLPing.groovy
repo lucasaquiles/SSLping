@@ -10,7 +10,7 @@ import java.security.SecureRandom
 
 import static groovyx.net.http.Method.GET
 
-def requestURL = ""
+def requestURL = this.args[0]
 def http = new HTTPBuilder( requestURL)
 
 def sslProtocols = ['TLSv1.2']
@@ -38,7 +38,7 @@ http.client.connectionManager.schemeRegistry.register(
 def status = http.request( GET ) {
 
     response.success = { res, reader ->
-	println "reader: ${reader}"
+	    println "reader: ${reader}"
         println "response: ${res}" 
     }
 //    println "status ${statuis}"
